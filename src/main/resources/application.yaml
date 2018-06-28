@@ -1,0 +1,25 @@
+server:
+    port: 8080
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://localhost:8761/eureka
+spring:
+    application:
+        name: employee-producer
+    cloud:
+        stream:
+            kafka:
+                binder:
+                    brokers: localhost:9092
+                bindings:
+                    greetings-in:
+                        destination: greetings
+                        contentType: application/json
+                    greetings-out:
+                        destination: greetings
+                        contentType: application/json
+    kafka:
+                           consumer:
+                             group-id: 500
+                             client-id: 99
