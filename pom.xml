@@ -24,7 +24,7 @@
 		<java.version>1.8</java.version>
 		<spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
 		<slf4jVersion>1.7.25</slf4jVersion>
-		<docker.image.prefix>springio</docker.image.prefix>
+		<docker.image.prefix>kafka</docker.image.prefix>
 	</properties>
 
 	<dependencies>
