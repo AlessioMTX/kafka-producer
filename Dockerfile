@@ -1,4 +1,8 @@
-FROM openjdk:8-jdk-alpine
-WORKDIR /usr/local
-COPY ./target/service-discovery-0.0.1-SNAPSHOT.jar app.jar
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/usr/local/app.jar"]
+FROM openjdk:8-jre
+MAINTAINER David Flemström <dflemstr@spotify.com>
+
+ENTRYPOINT ["/usr/bin/java", "-jar", "/usr/share/myservice/myservice.jar"]
+
+ADD target/lib           /usr/share/myservice/lib
+ARG JAR_FILE
+ADD target/${JAR_FILE} /usr/share/myservice/myservice.jar
