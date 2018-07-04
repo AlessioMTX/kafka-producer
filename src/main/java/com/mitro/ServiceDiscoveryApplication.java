@@ -18,7 +18,7 @@ public class ServiceDiscoveryApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(ServiceDiscoveryApplication.class, args);
-		GreetingsService greetingsService = ctx.getBean(GreetingsService.class);
-		greetingsService.receiveGreetings();
 	}
+
+
 }

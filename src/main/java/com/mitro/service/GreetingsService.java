@@ -40,8 +40,4 @@ public class GreetingsService {
                 .setHeader(MessageHeaders.CONTENT_TYPE, MimeTypeUtils.APPLICATION_JSON)
                 .build());
     }
-
-    public void receiveGreetings() {
-        subscribableChannel.subscribe(message -> logger.info("receiveGreetings {}", message));
-    }
 }
