@@ -15,13 +15,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class GreetingsListener {
 
-    Logger logger = LoggerFactory.getLogger(GreetingsListener.class);
-
-
-    @StreamListener(GreetingsStreams.INPUT)
-    public void handleGreetingsInput(@Payload Greetings greetings) {
-        logger.info("Greetings input -> {}", greetings);
-    }
+    private Logger logger = LoggerFactory.getLogger(GreetingsListener.class);
 
     @StreamListener(GreetingsStreams.OUTPUT)
     public void handleGreetingsOutput(@Payload Greetings greetings) {

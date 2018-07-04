@@ -24,12 +24,12 @@ public class GreetingsService {
     @Autowired
     private GreetingsStreams greetingsStreams;
 
-    private Logger logger = LoggerFactory.getLogger(GreetingsService.class);
+    Logger logger = LoggerFactory.getLogger(GreetingsService.class);
 
     private MessageChannel messageChannel;
     private SubscribableChannel subscribableChannel;
 
-    GreetingsService() {
+    public GreetingsService() {
         messageChannel = greetingsStreams.outboundGreetings();
         subscribableChannel = greetingsStreams.inboundGreetings();
     }

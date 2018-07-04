@@ -21,9 +21,4 @@ public class ServiceDiscoveryApplication {
 		GreetingsService greetingsService = ctx.getBean(GreetingsService.class);
 		greetingsService.receiveGreetings();
 	}
-
-	@Bean
-	public GreetingsService greetingsService() {
-		return new GreetingsService();
-	}
 }
