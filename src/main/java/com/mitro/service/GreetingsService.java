@@ -26,13 +26,7 @@ public class GreetingsService {
 
     Logger logger = LoggerFactory.getLogger(GreetingsService.class);
 
-    private MessageChannel messageChannel;
-    private SubscribableChannel subscribableChannel;
-
-    public GreetingsService() {
-        messageChannel = greetingsStreams.outboundGreetings();
-        subscribableChannel = greetingsStreams.inboundGreetings();
-    }
+    private MessageChannel messageChannel = greetingsStreams.outboundGreetings() ;
 
     public void sendGreeting(final Greetings greetings) {
         messageChannel.send(MessageBuilder
