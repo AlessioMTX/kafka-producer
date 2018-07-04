@@ -22,12 +22,19 @@ import org.springframework.util.MimeTypeUtils;
 public class GreetingsService {
 
     @Autowired
-    GreetingsStreams greetingsStreams;
+    private GreetingsStreams greetingsStreams;
 
-    Logger logger = LoggerFactory.getLogger(GreetingsService.class);
+    private Logger logger = LoggerFactory.getLogger(GreetingsService.class);
+
+    private MessageChannel messageChannel;
+    private SubscribableChannel subscribableChannel;
+
+    GreetingsService() {
+        messageChannel = greetingsStreams.outboundGreetings();
+        subscribableChannel = greetingsStreams.inboundGreetings();
+    }
 
     public void sendGreeting(final Greetings greetings) {
-        MessageChannel messageChannel = greetingsStreams.outboundGreetings();
         messageChannel.send(MessageBuilder
                 .withPayload(greetings)
                 .setHeader(MessageHeaders.CONTENT_TYPE, MimeTypeUtils.APPLICATION_JSON)
@@ -35,7 +42,6 @@ public class GreetingsService {
     }
 
     public void receiveGreetings() {
-        SubscribableChannel subscribableChannel = greetingsStreams.inboundGreetings();
         subscribableChannel.subscribe(message -> logger.info("receiveGreetings {}", message));
     }
 }
