@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
 
     @Autowired
-    GreetingsService greetingsService;
+    private GreetingsService greetingsService;
 
     @RequestMapping(value = "/employee", method = RequestMethod.GET)
     public Employee firstPage() {

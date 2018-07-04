@@ -24,11 +24,10 @@ public class GreetingsService {
     @Autowired
     private GreetingsStreams greetingsStreams;
 
-    Logger logger = LoggerFactory.getLogger(GreetingsService.class);
-
-    private MessageChannel messageChannel = greetingsStreams.outboundGreetings() ;
+    private Logger logger = LoggerFactory.getLogger(GreetingsService.class);
 
     public void sendGreeting(final Greetings greetings) {
+        MessageChannel messageChannel = greetingsStreams.outboundGreetings() ;
         messageChannel.send(MessageBuilder
                 .withPayload(greetings)
                 .setHeader(MessageHeaders.CONTENT_TYPE, MimeTypeUtils.APPLICATION_JSON)
