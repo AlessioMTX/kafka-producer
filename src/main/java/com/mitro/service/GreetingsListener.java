@@ -17,7 +17,7 @@ public class GreetingsListener {
 
     private Logger logger = LoggerFactory.getLogger(GreetingsListener.class);
 
-    @StreamListener(GreetingsStreams.OUTPUT)
+    //@StreamListener(GreetingsStreams.OUTPUT)
     public void handleGreetingsOutput(@Payload Greetings greetings) {
         logger.info("Greetings output -> {}", greetings);
     }
